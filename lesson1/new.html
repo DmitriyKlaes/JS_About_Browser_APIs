@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Страница 2</p>
+    <a href="./index.html" id="to">Вперед</a>
+    <a href="./index.html" id="from">Назад</a>
+    <script>
+        const fromBtn = document.querySelector('#from');
+
+        fromBtn.addEventListener('click', () => {
+            window.history.back();
+            // window.history.go(-1);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="second-task">
+        <button id="add">Добавить элемент</button>
+        <button id="delete">Удалить элемент</button>
+        <button id="clone">Клонировать элемент</button>
+        <div class="box"></div>
+    </section>
+    <script>
+        //         Определение текущего размера окна браузера:
+        // Напишите функцию, которая будет выводить текущую ширину и высоту окна браузера при его изменении.
+
+        // function showWidthHeight() {
+        //     const widthAndheight = `width: ${window.innerWidth} and height: ${window.innerHeight}`;
+        //     console.log(widthAndheight);
+        // }
+
+        // window.addEventListener('resize', showWidthHeight);
+
+        // Подтверждение закрытия страницы:
+        // Создайте всплывающее окно или диалоговое окно, которое появляется при попытке закрыть вкладку браузера и спрашивает пользователя, уверен ли он в своем решении закрыть страницу.
+
+        // window.addEventListener('beforeunload', (e) => {
+        //     e.preventDefault();
+        //     e.returnValue = 'куку';
+        // })
+
+        // window.onbeforeunload = function () {
+        //     return `Ничего не забыл?`;
+        // };
+
+        // Управление историей переходов:
+        // Используйте объект history для управления историей переходов на веб - странице.Создайте кнопки "Назад" и "Вперед" для перемещения по истории.
+        // const toBtn = document.querySelector('#to');
+        // const fromBtn = document.querySelector('#from');
+
+        // fromBtn.addEventListener('click', () => {
+        //     window.history.back();
+        //     window.history.go(-1);
+        // });
+        // toBtn.addEventListener('click', () => {
+        //     window.history.forward();
+        //     window.history.go(1);
+        // })
+        //         Вы должны создать веб - страницу, которая позволяет пользователю динамически управлять элементами на странице.Ниже приведены основные требования и функциональность:
+        // На странице должны быть кнопки "Добавить элемент", "Удалить элемент" и "Клонировать элемент".
+        // При нажатии на кнопку "Добавить элемент" на страницу добавляется новый квадратный элемент(<div>) с размерами 100x100 пикселей. Этот элемент должен иметь класс .box и содержать текст, указывающий порядковый номер элемента (1, 2, 3 и так далее).
+        //     При нажатии на кнопку "Удалить элемент" удаляется последний добавленный элемент, если таковой имеется.
+        //     При нажатии на кнопку "Клонировать элемент" создается копия последнего добавленного элемента и добавляется на страницу.
+        //     Все элементы имеют класс .box и стилизованы с помощью CSS .
+        //     Элементы могут быть добавлены, удалены и клонированы в любом порядке и в любом количестве.
+
+        const addBtn = document.querySelector('#add');
+        const deleteBtn = document.querySelector('#delete');
+        const clonBtn = document.querySelector('#clone');
+        let index = 0;
+
+        addBtn.addEventListener('click', () => {
+            index++;
+            const newDiv = createDiv();
+            newDiv.textContent = index;
+            document.body.append(newDiv);
+        });
+        deleteBtn.addEventListener('click', () => {
+            const lastDiv = document.querySelectorAll('.box');
+            const theLastDiv = lastDiv[lastDiv.length - 1];
+            if (theLastDiv.classList.contains('clone')) {
+                theLastDiv.remove();
+            }
+            else {
+                theLastDiv.remove();
+                index--;
+            }
+
+        })
+        clonBtn.addEventListener('click', () => {
+            const lastDiv = document.querySelectorAll('.box');
+            const theLastDiv = lastDiv[lastDiv.length - 1];
+            let clone = theLastDiv.cloneNode(true);
+            clone.classList.add('clone');
+            document.body.appendChild(clone);
+        });
+
+        function createDiv() {
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('box');
+            newDiv.style.background = 'yellow';
+            return newDiv;
+        };
+
+    </script>
+</body>
+
+</html>
