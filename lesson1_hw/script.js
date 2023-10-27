@@ -110,8 +110,8 @@ function cardRender() {
                     <span>${sportClass.classTime}</span></p>
                 </div>
                 <div class="card__buttons">
-                    <button id=${sportClass.id} class="button-join">Join</button>
-                    <button data-id="${sportClass.classTitle}" class="button-cancel inactive">Reject record</button>
+                    <button id=${sportClass.id} class="button-join">Запись</button>
+                    <button data-id="${sportClass.classTitle}" class="button-cancel inactive">Отмена</button>
                 </div>
             </article>`
         cardBox.insertAdjacentHTML('beforeend', card);
