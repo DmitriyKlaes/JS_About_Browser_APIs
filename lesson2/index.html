@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .active {
+            background-color: yellowgreen;
+
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .task-second {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            visibility: hidden;
+            width: 500px;
+            height: 300px;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            border-radius: 20px;
+            border: 10px solid beige;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .popup[open] {
+            visibility: visible;
+            animation: zoom 0.3s linear forwards;
+        }
+
+        .popup svg {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        @keyframes zoom {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tast-one">
+        <!-- Вам необходимо создать навигационное меню для веб-сайта, в котором меняется активный пункт при клике без фактического перехода на другие страницы. Меню должно обладать следующими характеристиками:
+        Подсветка активного пункта: При клике на пункт меню он должен становиться активным, и для активного пункта должен применяться определенный стиль (например, изменение цвета фона). Если выбрать другой пункт, предыдущий должен перестать быть активным.
+        Эффекты наведения: При наведении курсора на пункты меню должны применяться эффекты (например, изменение цвета текста или фона) для подсказки пользователю, что пункт меню является интерактивным. -->
+        <ul>
+            <li><a data-id="0" class="link" href="#">Главная</a></li>
+            <li><a data-id="1" class="link" href="#">Абракадабра</a></li>
+            <li><a data-id="2" class="link" href="#">О нас</a></li>
+            <li><a data-id="4" class="link" href="#">Контакты</a></li>
+            <li><a data-id="4" class="link" href="#">Фото</a></li>
+        </ul>
+    </div>
+
+    <div class="task-second">
+        <button class="button">Открыть</button>
+        <dialog class="popup" id="popup">
+            <h2>Модальное окно</h2>
+            <svg id="crossModal" class="cross" xmlns="http://www.w3.org/2000/svg" width="50" height="50"
+                fill="currentColor" viewBox="0 0 16 16">
+                <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                    id="mainIconPathAttribute"></path>
+            </svg>
+        </dialog>
+    </div>
+
+    <div class="task-three">
+        <button class="button-buy">Купить</button>
+    </div>
+    <div class="task-four">
+        <div class="question">
+            <p>Вопрос 1: Какой ваш любимый цвет?</p>
+            <div id="color" class="options">
+                <label>
+                    <input type="radio" name="q1" value="Синий"> Синий
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="Зеленый"> Зеленый
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="Красный"> Красный
+                </label>
+            </div>
+        </div>
+
+        <div id="animal" class="question">
+            <p>Вопрос 2: Какое ваше любимое животное?</p>
+            <div class="options">
+                <label>
+                    <input type="radio" name="q2" value="Собака"> Собака
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="Кот"> Кот
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="Попугай"> Попугай
+                </label>
+            </div>
+        </div>
+
+        <button id="submit">Завершить опрос</button>
+
+        <div id="resultBox" class="result" style="display: none;">
+            <p>Результаты:</p>
+            <p id="result-q1">Вопрос 1:
+            <p id="colorResult"></p>
+            </p>
+            <p id="result-q2">Вопрос 2:
+            <p id="animalResult"></p>
+            </p>
+        </div>
+    </div>
+    <script>
+        const inputColor = document.querySelector('.options').querySelectorAll('input');
+
+        const inputAnimal = document.querySelector('.question').querySelectorAll('input');
+
+        submit.addEventListener('click', () => {
+            inputColor.forEach(inputEl => {
+                if (inputEl.checked) {
+                    resultBox.style.display = 'block';
+                    colorResult.textContent = inputEl.value;
+                }
+            });
+            inputAnimal.forEach(element => {
+                if (element.checked) {
+                    animalResult.textContent = element.value;
+                }
+            });
+        })
+
+
+
+        const links = document.querySelectorAll('.link');
+
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.target.classList.add('active');
+            })
+        })
+
+        const button = document.querySelector('.button');
+
+        button.addEventListener('click', () => {
+            popup.showModal();
+        })
+        crossModal.addEventListener('click', () => {
+            popup.close();
+        })
+
+        popup.addEventListener('click', () => {
+            if (popup) {
+                popup.close();
+            }
+        });
+
+        const buttonBuy = document.querySelector('.button-buy');
+
+        buttonBuy.addEventListener('click', (e) => {
+            if (e.isTrusted) {
+                buttonBuy.textContent = 'Товар добавлен в корзину';
+                setTimeout(() => {
+                    buttonBuy.textContent = 'Купить';
+                }, 2000);
+            }
+        })
+    </script>
+</body>
+
+</html>
