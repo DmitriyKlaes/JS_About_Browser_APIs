@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.random-image {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.random-image__image-box {
+    position: relative;
+    display: flex;
+    width: 500px;
+    height: 700px;
+    justify-content: center;
+}
+
+.box {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+    bottom: -50px;
+    padding: 10px;
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.author-photo {
+    width: 32px;
+    display: block;
+
+}
+
+.make-like {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.like-icon {
+    width: 32px;
+    cursor: pointer;
+}

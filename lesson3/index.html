@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #photo-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 610px;
+        max-height: 1000px;
+    }
+
+    .photo {
+        flex: 1 1 calc(33.33% - 20px);
+        margin: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+    }
+
+    .photo img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<body>
+    <h1>Выберите категорию товаров:</h1>
+    <select name="" id="categories">
+        <option value="" selected>Выберите категорию</option>
+        <option value="Электроника">Электроника</option>
+        <option value="Бытовая техника">Бытовая техника</option>
+        <option value="Книги">Книги</option>
+        <option value="Одежда">Одежда</option>
+        <option value="Мебель">Мебель</option>
+    </select>
+    <h2>Товары:</h2>
+    <ul id="products"></ul>
+
+    <div id="photo-container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
